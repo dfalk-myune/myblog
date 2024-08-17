@@ -7,6 +7,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 
+use Illuminate\Support\Facades\Auth;
+
 class PostController extends Controller
 {
    
@@ -16,11 +18,26 @@ class PostController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
+    { 
         
-        $posts = Post::all();
+        // //$posts = Post::all();
+        // //dd(Auth::user());
+        // $posts = Auth::user()->posts;
         
-        
+        // dd($posts);
+
+        // if (Auth::check()) {
+            
+            
+            //dd('user is logged in ', Auth::user() );
+        // } else {
+        //     dd('No user is logged in');
+        // }
+
+        $posts = Auth::user()->posts;
+ 
+        //dd($posts);
+
         return view('Posts.index', compact('posts'));
 
     }
@@ -73,7 +90,10 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        
+        if (Auth::id() != $post->user_id){
+            //dd(Auth::id(),$post->user_id);
+            abort(403);
+        }
         return view('Posts.show',compact('post'));
 
     }
@@ -84,6 +104,10 @@ class PostController extends Controller
     //public function edit(string $id)
     public function edit(Post $post)
     {
+        if (Auth::id() != $post->user_id){
+            //dd(Auth::id(),$post->user_id);
+            abort(403);
+        }
         return view('posts.edit', compact('post'));
     }
 
@@ -95,6 +119,10 @@ class PostController extends Controller
      */
     public function destroy(string $id)
     {
+        // if (Auth::id() != $post->user_id){
+        //     //dd(Auth::id(),$post->user_id);
+        //     abort(403);
+        // }
         //return view('Posts.index');
         Post::destroy($id);
         return redirect()->route('posts.index');

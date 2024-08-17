@@ -34,11 +34,16 @@ class PostController extends Controller
         //     dd('No user is logged in');
         // }
 
-        $posts = Auth::user()->posts;
- 
-        //dd($posts);
+        if (Auth::user()->isAdmin()){
+            $posts = Post::all();
+            return view('Posts.index', compact('posts'));
+        }
+        else{
+            $posts = Auth::user()->posts;
+            return view('Posts.index', compact('posts'));
+        }
 
-        return view('Posts.index', compact('posts'));
+        
 
     }
 

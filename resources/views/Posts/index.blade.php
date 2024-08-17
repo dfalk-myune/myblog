@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Blog Posts</h1>
+    <h1>Blog Posts  ({{Str::ucfirst(Auth::user()->role)  }})</h1>
     <a href="{{ route('posts.create') }}" class="btn btn-primary" >Create Post</a>
     
         
@@ -17,3 +17,4 @@
 
 @endsection
 
+{{-- ({{ ucfirst(Auth::user()->role) }}) --}}

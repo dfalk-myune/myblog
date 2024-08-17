@@ -15,10 +15,12 @@ class Post extends Model
 
     protected static function booted(){
         static::creating(function (Post $post){
-            if (auth()->check()){
+            // if (auth()->check()){
+            //     $post->user_id = Auth::id();
+            // }
+            if (Auth::check()){
                 $post->user_id = Auth::id();
             }
-            
         });
     }
 

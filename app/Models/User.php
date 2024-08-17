@@ -13,6 +13,35 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+    public const ROLE_USER = 'user';
+    public const ROLE_AUTHOR = 'author';
+    public const ROLE_ADMIN = 'admin';
+
+     /**
+     * Check if the user has a specific role.
+     */
+    public function hasRole($role)
+    {
+        return $this->role === $role;
+    }
+
+    /**
+     * Check if the user is an admin.
+     */
+    public function isAdmin()
+    {
+        return $this->role === self::ROLE_ADMIN;
+    }
+
+    /**
+     * Check if the user is an author.
+     */
+    public function isAuthor()
+    {
+        return $this->role === self::ROLE_AUTHOR;
+    }
+
+
     /**
      * The attributes that are mass assignable.
      *

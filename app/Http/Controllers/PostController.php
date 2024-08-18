@@ -20,19 +20,7 @@ class PostController extends Controller
     public function index()
     { 
         
-        // //$posts = Post::all();
-        // //dd(Auth::user());
-        // $posts = Auth::user()->posts;
         
-        // dd($posts);
-
-        // if (Auth::check()) {
-            
-            
-            //dd('user is logged in ', Auth::user() );
-        // } else {
-        //     dd('No user is logged in');
-        // }
 
         if (Auth::user()->isAdmin()){
             $posts = Post::all();
@@ -56,16 +44,11 @@ class PostController extends Controller
 
     }
 
-        /**
-     * Update the specified resource in storage.
-     */
-    //public function update( string $id)
+        
     public function update(Request $request, string $id)
     
     {
-        //$request->validate(['title' => 'required','content' => 'required',]);
-
-        //Post::updateOrCreate($request->all());
+        
 
         $post = Post::find($id);
         
@@ -75,8 +58,7 @@ class PostController extends Controller
 
         return redirect()->route('posts.index');
 
-        //return redirect()->route('posts.show', $post->id)
-        //    ->with('success', 'Post updated successfully');
+        
     }
 
     /**
@@ -96,7 +78,7 @@ class PostController extends Controller
     public function show(Post $post)
     {
         if (Auth::id() != $post->user_id){
-            //dd(Auth::id(),$post->user_id);
+             
             abort(403);
         }
         return view('Posts.show',compact('post'));
@@ -110,7 +92,7 @@ class PostController extends Controller
     public function edit(Post $post)
     {
         if (Auth::id() != $post->user_id){
-            //dd(Auth::id(),$post->user_id);
+             
             abort(403);
         }
         return view('posts.edit', compact('post'));
@@ -120,15 +102,12 @@ class PostController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     * <a href="{{ route('posts.destroy',$post->id)}}"  style="margin-right: 10px;" class="btn btn-primary"> Delete </a>
-     */
+     *  
+     * 
+     * */
     public function destroy(string $id)
     {
-        // if (Auth::id() != $post->user_id){
-        //     //dd(Auth::id(),$post->user_id);
-        //     abort(403);
-        // }
-        //return view('Posts.index');
+        
         Post::destroy($id);
         return redirect()->route('posts.index');
 

@@ -5,7 +5,7 @@
     <a href="{{ route('posts.create') }}" class="btn btn-primary" >Create Post</a>
     
         
-    <u1>
+    <ul>
         @foreach ($posts as $post)
         <li>
             <a href="{{ route('posts.show', $post->id) }}" >{{ $post->title }} 

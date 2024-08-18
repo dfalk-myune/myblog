@@ -7,7 +7,7 @@
     <a href="{{ route('welcome')}}"  style="margin-right: 10px;"> Back </a>
     <a href="{{ route('admin.posts.create') }}" class="btn btn-primary" >Create Post</a>
 
-    <u1>
+    <ul>
         @foreach ($posts as $post)
         <li>
             <a href="{{ route('admin.posts.show', $post->id) }}" >{{ $post->title }} 

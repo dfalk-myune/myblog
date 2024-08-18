@@ -26,9 +26,7 @@ Route::group(['middleware'=>['auth']],function(){
         'update' => 'posts.update',
         'destroy' => 'posts.destroy',
     ]);
-    // Route::resource('posts',PostController::class);
-    //Route::resource('photos',PhotoController::class);
-    // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
     Route::get('/home', [App\Http\Controllers\HomeController::class, '/'])->name('home');
 });
 
@@ -58,17 +56,6 @@ Route::prefix('admin')->middleware(AdminMiddleware::class)->group(function () {
 });
 
 
-// Route::prefix('admin')->middleware('admin')->group(function(){
-//     Route::resource('users',AdminUserController::class);
-//     Route::resource('posts',AdminPostController::class);
-// });
-
-
-
-// Route::prefix('admin')->group(function(){
-//     Route::resource('users',AdminUserController::class);
-//     Route::resource('posts',AdminPostController::class);
-// });
 
 
 Auth::routes();

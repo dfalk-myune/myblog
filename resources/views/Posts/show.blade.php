@@ -12,7 +12,7 @@
     </form>
 
     <a href="{{ route('posts.edit', $post) }}" class="btn btn-primary">Edit</a>
-    <u1>
+    <ul>
         <li>ID: {{ $post->id}}</li>
         <li>Title: {{$post->title}}</li>
         <li>Content:{{$post->content}}</li>

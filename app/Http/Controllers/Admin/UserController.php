@@ -19,8 +19,8 @@ class UserController extends Controller
     }
 
     public function store(Request $request){
-        $request->validate();
-        User::create($request->all(['name' => 'required','email' => 'required','role'=>'required',]));
+        $request->validate(['name'=>'required','email'=>'required','role'=>'required'],);
+        User::create($request->all());//(['name' => 'required','email' => 'required','role'=>'required',]));
         return redirect()->route('admin.users.index');
     }
 

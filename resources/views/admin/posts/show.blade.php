@@ -7,7 +7,7 @@
         Unknown User
     @endif</a>' (Content for Admin)</h1>
     
-    <a href="{{ url()-> previous()}}"  style="margin-right: 10px;"> Back </a>
+    <a href="{{ route('admin.posts.index')}}"  style="margin-right: 10px;"> Back </a>
     
     <form action="{{ route('admin.posts.destroy', $post->id) }}" method="POST" style="display: inline;">
         @csrf

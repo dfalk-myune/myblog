@@ -6,6 +6,7 @@
     @else
         'Unknown User'
     @endif</a>(Content for Admin)</h1>
+    <a href="{{ url()-> previous()}}"  style="margin-right: 10px;"> Back </a>
     
     <form action="{{ route('admin.posts.update', $post->id) }}" method="POST">
         @csrf

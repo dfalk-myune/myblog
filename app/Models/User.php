@@ -9,6 +9,9 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Model;
 
+use App\Models\Post;
+use PhpParser\Node\Expr\Cast\String_;
+
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
@@ -16,6 +19,11 @@ class User extends Authenticatable
     public const ROLE_USER = 'user';
     public const ROLE_AUTHOR = 'author';
     public const ROLE_ADMIN = 'admin';
+
+
+    
+
+
 
      /**
      * Check if the user has a specific role.
@@ -51,6 +59,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
     ];
 
     /**
@@ -78,5 +87,11 @@ class User extends Authenticatable
 
     public function posts(): HasMany {
         return $this->hasMany(Post::class);
+    }
+
+
+    public function isWorking()
+    {
+        return "hey bob"; // Just for testing
     }
 }

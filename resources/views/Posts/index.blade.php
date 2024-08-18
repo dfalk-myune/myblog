@@ -8,7 +8,12 @@
     <u1>
         @foreach ($posts as $post)
         <li>
-            <a href="{{ route('posts.show', $post->id) }}" >{{ $post->title }}</a>
+            <a href="{{ route('posts.show', $post->id) }}" >{{ $post->title }} 
+                {{-- @if($post->user_id && $post->user) 
+                    ({{ $post->user->name }})
+                @else
+                    (Unknown User)
+                @endif</a> --}}
         </li>
         @endforeach
 

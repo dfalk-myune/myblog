@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Users</h1>
+    <h1>Users (content for admin)</h1>
     {{-- <a href="{{ route('posts.create') }}" class="btn btn-primary" >Create Post</a>
      --}}
         

@@ -46,6 +46,19 @@ class PostController extends Controller
     public function destroy(string $id)
     {
         Post::destroy($id);
-        return redirect()->route('posts.index');
+        return redirect()->route('admin.posts.index');
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(Post $post)
+    {
+        // if (Auth::id() != $post->user_id){
+        //     //dd(Auth::id(),$post->user_id);
+        //     abort(403);
+        // }
+        return view('admin.posts.show',compact('post'));
+
     }
 }

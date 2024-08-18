@@ -11,11 +11,11 @@ class UserController extends Controller
 {
     public function index(){
         $users = User::all();
-        return view('admin.user.index',compact('users'));
+        return view('admin.users.index',compact('users'));
     }
 
     public function create(){
-        return view('admin.user.create');
+        return view('admin.users.create');
     }
 
     public function store(Request $request){

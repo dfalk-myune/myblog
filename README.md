@@ -1,36 +1,56 @@
-Assignment 1 COSC360
+Assignment 2 COSC360
 
 GITHUB URL:
-https://github.com/dfalk-myune/myblog
+https://github.com/dfalk-myune/myblog/tree/feature/auth-admin-panel
 
 TO SEED:
+FULL SEED (3 users with 3 posts each, and 1 admin if none present):
 php artisan db:seed
 
-TO RUN:
-php artisan serve
+PARTIAL SEED (add admin if one doesn't exist):
+php artisan db:seed --class=AdminUserSeeder
 
-TO RUN TESTS:
-php artisan test
+
+
+TO RUN:
+terminal 1: php artisan serve
+terminal 2: npm run dev
+Open the browser then Register or login with hard coded Admin.
+Initial hardcoded admin:
+ login: Bob@example.com
+ password: pete
+Admin users are taken to Admin Dashboard.
+Regular users are taken to Blog Posts (User).
+
 
 APROACH: 
+Existing basic blog application from assessment 1 was enhanced.
+Laravel UI was installed with authentification scaffolding.
+Middleware was created (AdminMiddleware)and used to protect certain 
+routes that aren't admin.
+UserControllers and PostControllers were created.
+All relevant routes in web.php were setup with appropriate prefixes.
+Full CRUD were established for User and Posts for admin users.
+Roles were assigned to users (admin,author,user). These can be adjusted 
+by admin. 
 
-Created a database, defined routes, created a model , created a factory and seeder, created controllers, created blade views, created unit tests.
 
 PROBLEMS:
+MongoDB was troublesome to setup and the existing database was retained.
+Bootstrap was similarly troublesome to setup and in the end the system
+was left with simple blade views.
 
-1) Dependencies are not automatically added (when using post eloquent 'App\...' is not added). Similary, there are no links when clicking on elements with code (as was demonstrated in the lectures). Attempts to add the appropriate extension in VSCCODE failed to improve the situation. Unsure which extension is neccessary to achieve this.
+TESTING:
 
-2) Git was unable to push changes to github using the command line. Github desktop was needed in order to complete the assignment. The error message after entering the password (prompted by the push) was:
+Extensive and exhaustive testing was carried out for admin CRUD functions,
+including both users and posts.
 
- "remote: Support for password authentication was removed on August 13, 2021.
-remote: Please see https://docs.github.com/get-started/getting-started-with-git/about-remote-repositories#cloning-with-https-urls for information on currently recommended modes of authentication.
-fatal: Authentication failed for 'https://github.com/dfalk-myune/myblog.git/'" 
+1) Deletion, edit, creation and update of posts were successful for admin.
+2) Deletion, edit, creation and update of users were successful for admin.
+This included new users and changing the user's 'role'.
+No changes to an existing user's password was programmed.
+3) pathways for admin were tested for non-admin users. The middleware was 
+successful in preventing unauthorised access.
+4) changing an admin user to non-admin was successful and the user was 
+shifted to the regular blog post section.
 
-FEATURES:
-1) Full CRUD functionality.
-
-2) Auto redirect from home address to /posts.
-
-3) The edit option has the data preloaded in a separate view.
-
-4) The delete and edit return back to post view when finished.

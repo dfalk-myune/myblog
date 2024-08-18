@@ -19,7 +19,9 @@ class UserController extends Controller
     }
 
     public function store(Request $request){
-
+        $request->validate();
+        User::create($request->all(['name' => 'required','email' => 'required','role'=>'required',]));
+        return redirect()->route('admin.users.index');
     }
 
     public function edit(User $user){
@@ -28,12 +30,29 @@ class UserController extends Controller
 
     public function update(Request $request, string $id)
     {
-        // $user = User::find($id);
-        // $validated = $request->validate(['name' => 'required','email' => 'required','role'=>'required',]);
-        // $user->update($validated);    
+        $user = User::find($id);
 
+        if (!$user) {
+            \Log::error("User not found with ID: $id");
+            return redirect()->back()->with('error', 'User not found.');
+        }
+    
+        \Log::info('User before update:', $user->toArray());
+    
+        $validated = $request->only(['name', 'email', 'role']);
+    
+        // Log validated data
+        \Log::info('Incoming request data:', $validated);
+    
+        $updated = $user->update($validated);
+    
+        // Log result of update operation
+        \Log::info('Update successful:', ['updated' => $updated]);
+    
+        // Verify if update was successful
+        \Log::info('User after update:', $user->fresh()->toArray());
+    
         return redirect()->route('admin.users.index');
-
     }
 
     public function destroy(string $id)

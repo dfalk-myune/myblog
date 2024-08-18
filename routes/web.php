@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\PostController as AdminPostController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\PostController;
+use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Support\Facades\Route;
 
 
@@ -31,8 +32,8 @@ Route::group(['middleware'=>['auth']],function(){
     Route::get('/home', [App\Http\Controllers\HomeController::class, '/'])->name('home');
 });
 
-
-Route::prefix('admin')->group(function () {
+//
+Route::prefix('admin')->middleware(AdminMiddleware::class)->group(function () {
     // Admin-facing user management routes with custom names
     Route::resource('users', AdminUserController::class)->names([
         'index' => 'admin.users.index',

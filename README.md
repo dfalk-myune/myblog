@@ -37,6 +37,7 @@ by admin.
 
 PROBLEMS:
 MongoDB was troublesome to setup and the existing database was retained.
+UPDATE: MongoDB was added (in place of mysql) on 20/8/24
 Bootstrap was similarly troublesome to setup and in the end the system
 was left with simple blade views.
 

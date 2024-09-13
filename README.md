@@ -1,7 +1,7 @@
-Assignment 2 COSC360
+Assignment 3 COSC360
 
 GITHUB URL:
-https://github.com/dfalk-myune/myblog/tree/feature/auth-admin-panel
+https://github.com/dfalk-myune/myblog/tree/assignment3
 
 TO SEED:
 FULL SEED (3 users with 3 posts each, and 1 admin if none present):

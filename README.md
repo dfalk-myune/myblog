@@ -7,8 +7,7 @@ TO SEED:
 FULL SEED (3 users with 3 posts each, and 1 admin if none present):
 php artisan db:seed
 
-PARTIAL SEED (add admin if one doesn't exist):
-php artisan db:seed --class=AdminUserSeeder
+
 
 
 
@@ -24,7 +23,7 @@ Regular users are taken to Blog Posts (User).
 
 
 APROACH: 
-Existing basic blog application from assessment 1 was enhanced.
+Existing basic blog application from assessment 2 was enhanced, and now uses mongodb.
 Laravel UI was installed with authentification scaffolding.
 Middleware was created (AdminMiddleware)and used to protect certain 
 routes that aren't admin.
@@ -36,10 +35,7 @@ by admin.
 
 
 PROBLEMS:
-MongoDB was troublesome to setup and the existing database was retained.
-UPDATE: MongoDB was added (in place of mysql) on 20/8/24
-Bootstrap was similarly troublesome to setup and in the end the system
-was left with simple blade views.
+
 
 TESTING:
 

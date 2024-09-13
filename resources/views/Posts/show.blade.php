@@ -3,7 +3,7 @@
 @section('content')
     <h1>Blog Posts Details</h1>
     
-    <a href="{{ url()-> previous()}}"  style="margin-right: 10px;"> Back </a>
+    <a href="{{ url()-> previous()}}"  style="margin-right: 10px;">  Back </a>
     
     <form action="{{ route('posts.destroy', $post->id) }}" method="POST" style="display: inline;">
         @csrf

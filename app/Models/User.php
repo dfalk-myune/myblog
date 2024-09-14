@@ -8,13 +8,14 @@ use MongoDB\Laravel\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Sanctum\HasApiTokens;
 
 use App\Models\Post;
 use PhpParser\Node\Expr\Cast\String_;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, HasApiTokens; 
 
     public const ROLE_USER = 'user';
     public const ROLE_AUTHOR = 'author';

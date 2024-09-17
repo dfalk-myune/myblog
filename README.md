@@ -12,7 +12,19 @@ php artisan db:seed
 
 
 TO RUN:
-terminal 1: php artisan serve
+
+Copy .env.example into .env
+Run the following commands:
+
+composer install
+npm install
+npm run build
+php artisan migrate
+php artisan migrate:refresh
+php artsian db:seed
+php artisan serve
+
+=> Go to the address specified
 
 
 At this point, it is possible to either run the frontend program via accessing 
